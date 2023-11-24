@@ -38,7 +38,7 @@ class _LoginPageState extends State<LoginPage> {
               'Enter your email and password',
               style: TextStyle(
                 fontSize: 14,
-                color: Colors.black45,
+                color: Colors.black26,
               ),
             ),
             const SizedBox(
@@ -102,12 +102,12 @@ class _LoginPageState extends State<LoginPage> {
                               color: Colors.black,
                             ),
                           ),
-                          const SizedBox(width: 50),
+                          const SizedBox(width: 40),
                           OutlinedButton(
                             onPressed: _launchUrl,
                             style: OutlinedButton.styleFrom(
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(16.0),
+                                borderRadius: BorderRadius.circular(10.0),
                               ),
                               side: const BorderSide(color: Colors.redAccent),
                             ),
