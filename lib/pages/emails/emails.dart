@@ -31,7 +31,7 @@ class _EmailsPageState extends State<EmailsPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: Mail.get_online_emails,
+                  onTap: Mail.getOnlineEmails,
                   child: Icon(
                     Icons.email,
                     color: Colors.black,

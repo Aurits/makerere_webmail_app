@@ -6,20 +6,19 @@ class Mail {
   String id;
   String from;
   String to;
-  // ignore: non_constant_identifier_names
-  String reply_to;
+  String replyTo;
   String date;
   String subject;
   String message;
   String attachmentsName;
   String attachmentsUrl;
 
+  // Constructor for Mail object
   Mail({
     required this.id,
     required this.from,
     required this.to,
-    // ignore: non_constant_identifier_names
-    required this.reply_to,
+    required this.replyTo,
     required this.date,
     required this.subject,
     required this.message,
@@ -27,12 +26,13 @@ class Mail {
     required this.attachmentsUrl,
   });
 
+  // Factory method to create Mail object from JSON data
   factory Mail.fromJson(Map<String, dynamic> json) {
     return Mail(
       id: json['id'],
       from: json['from'],
       to: json['to'],
-      reply_to: json['reply_to'],
+      replyTo: json['reply_to'],
       date: json['date'],
       subject: json['subject'],
       message: json['message'],
@@ -41,12 +41,13 @@ class Mail {
     );
   }
 
+  // Convert Mail object to JSON
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'from': from,
       'to': to,
-      'reply_to': reply_to,
+      'reply_to': replyTo,
       'date': date,
       'subject': subject,
       'message': message,
@@ -55,63 +56,53 @@ class Mail {
     };
   }
 
+  // Get emails, first from local storage, then online if local is empty
   static Future<List<Mail>> getItems() async {
-    List<Mail> items = await get_local_emails();
+    List<Mail> items = await getLocalEmails();
     if (items.isEmpty) {
-      await get_online_emails();
-      items = await get_local_emails();
+      await getOnlineEmails();
+      items = await getLocalEmails();
     } else {
-      get_online_emails();
-      items = await get_local_emails();
+      getOnlineEmails();
+      items = await getLocalEmails();
     }
     return items;
   }
 
-  // ignore: non_constant_identifier_names
-  static Future<void> get_online_emails() async {
-    // ignore: avoid_print
-    print("Started....................");
+  // Fetch emails from the online API
+  static Future<void> getOnlineEmails() async {
     final dio = Dio();
     try {
       Response<dynamic> response = await dio.get(
         'http://10.1.3.216:8000/api/fetch-emails',
       );
 
-      if (response.data == null) {
-        // Handle the case where the response data is null
-        return;
-      }
-
       if (response.statusCode == 200) {
-        // Continue processing the response as before
         dynamic data = response.data;
-
-        // ignore: avoid_print
         print(data);
 
         if (data.containsKey('emails')) {
           List<dynamic> emails = data['emails'];
-          // ignore: unused_local_variable
           int i = 0;
           for (var x in emails) {
             i++;
             Mail article = Mail.fromJson(x);
             article.save();
-            // print("Article $i: ${article.title}");
           }
-        } else {}
-      } else {}
+        }
+      }
     } catch (error) {
       // Handle the error case
+      // ignore: avoid_print
+      print("Error fetching online emails: $error");
     }
   }
 
-  //save to the local db
-  Future<String> save() async {
+  // Save email to local database
+  Future<void> save() async {
     Database db = await Utils.init();
-    String resp = await init_table(db);
+    String resp = await initTable(db);
 
-    // ignore: avoid_print
     print(resp);
 
     if (resp.isNotEmpty) {
@@ -121,60 +112,47 @@ class Mail {
           toJson(),
           conflictAlgorithm: ConflictAlgorithm.replace,
         );
-        // ignore: avoid_print
         print("Saved successfully");
       } catch (e) {
-        resp = "Failed to save to the db ${e.toString()}";
-        // ignore: avoid_print
-        print("Failed db save");
+        print("Failed db save: $e");
       }
 
-      // ignore: avoid_print
-      print("table created");
-      return "table created";
+      print("Table created");
     } else {
-      // ignore: avoid_print
-      print("table not created");
-      return "table not created";
+      print("Table not created");
     }
   }
 
-  // ignore: non_constant_identifier_names
-  static Future<String> init_table(Database db) async {
+  // Initialize the database table
+  static Future<String> initTable(Database db) async {
     String resp = '';
-    // ignore: unnecessary_null_comparison
+
     if (db == null) {
-      resp = 'Failed to initialise the db';
+      resp = 'Failed to initialize the db';
     }
 
     try {
       await db.execute(
-          'CREATE TABLE IF NOT EXISTS emails (id TEXT PRIMARY KEY, from TEXT, to TEXT, reply_to TEXT, date TEXT, subject TEXT, message TEXT, attachmentsName TEXT, attachmentsUrl TEXT);');
-      resp = 'TABLE CREATED SUCCESSFULLY';
+        'CREATE TABLE IF NOT EXISTS emails (id TEXT PRIMARY KEY, from TEXT, to TEXT, reply_to TEXT, date TEXT, subject TEXT, message TEXT, attachmentsName TEXT, attachmentsUrl TEXT);',
+      );
+      resp = 'Table created successfully';
     } catch (e) {
-      resp = 'FAILED TO INSERT INTO THE DB';
+      resp = 'Failed to create table in the db: $e';
     }
     return resp;
   }
 
-  // ignore: non_constant_identifier_names
-  static Future<List<Mail>> get_local_emails({String where = "1"}) async {
+  // Get local emails from the database
+  static Future<List<Mail>> getLocalEmails({String where = "1"}) async {
     Database db = await Utils.init();
-//init_table
-    Mail.init_table(db);
-    return db
-        .query(
-      'emails',
-      where: where,
-    )
-        .then(
-      (value) {
-        List<Mail> items = [];
-        for (var x in value) {
-          items.add(Mail.fromJson(x));
-        }
-        return items;
-      },
-    );
+    await initTable(db);
+
+    return db.query('emails', where: where).then((value) {
+      List<Mail> items = [];
+      for (var x in value) {
+        items.add(Mail.fromJson(x));
+      }
+      return items;
+    });
   }
 }
