@@ -20,16 +20,24 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Image(
+            const Image(
               image: AssetImage('assets/images/logo.png'),
               height: 80,
               width: 80,
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             Text(
-              'enter your email and password to login',
+              'Enter your email and password',
               style: TextStyle(
                 fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: Colors.black,
+              ),
+            ),
+            Text(
+              'login',
+              style: TextStyle(
+                fontSize: 10,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
@@ -50,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                         border: OutlineInputBorder(),
                       ),
                     ),
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     FormBuilderTextField(
                       name: 'password',
                       decoration: InputDecoration(
