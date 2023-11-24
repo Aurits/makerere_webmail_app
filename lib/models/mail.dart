@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:makerere_webmail_app/utils/database.dart';
+import 'package:sqflite/sqflite.dart';
 
 class Mail {
   String id;
@@ -53,6 +55,18 @@ class Mail {
     };
   }
 
+  static Future<List<Mail>> getItems() async {
+    List<Mail> items = await get_local_emails();
+    if (items.isEmpty) {
+      await get_online_emails();
+      items = await get_local_emails();
+    } else {
+      get_online_emails();
+      items = await get_local_emails();
+    }
+    return items;
+  }
+
   // ignore: non_constant_identifier_names
   static Future<void> get_online_emails() async {
     // ignore: avoid_print
@@ -75,20 +89,92 @@ class Mail {
         // ignore: avoid_print
         print(data);
 
-        // if (data.containsKey('articles')) {
-        //   List<dynamic> articles = data['articles'];
-        //   // ignore: unused_local_variable
-        //   int i = 0;
-        //   for (var x in articles) {
-        //     i++;
-        //     NewsModel article = NewsModel.fromJson(x);
-        //     article.save();
-        //     // print("Article $i: ${article.title}");
-        //   }
-        // } else {}
+        if (data.containsKey('articles')) {
+          List<dynamic> articles = data['articles'];
+          // ignore: unused_local_variable
+          int i = 0;
+          for (var x in articles) {
+            i++;
+            Mail article = Mail.fromJson(x);
+            article.save();
+            // print("Article $i: ${article.title}");
+          }
+        } else {}
       } else {}
     } catch (error) {
       // Handle the error case
     }
+  }
+
+  //save to the local db
+  Future<String> save() async {
+    Database db = await Utils.init();
+    String resp = await init_table(db);
+
+    // ignore: avoid_print
+    print(resp);
+
+    if (resp.isNotEmpty) {
+      try {
+        await db.insert(
+          'news',
+          toJson(),
+          conflictAlgorithm: ConflictAlgorithm.replace,
+        );
+        // ignore: avoid_print
+        print("Saved successfully");
+      } catch (e) {
+        resp = "Failed to save to the db ${e.toString()}";
+        // ignore: avoid_print
+        print("Failed db save");
+      }
+
+      // ignore: avoid_print
+      print("table created");
+      return "table created";
+    } else {
+      // ignore: avoid_print
+      print("table not created");
+      return "table not created";
+    }
+  }
+
+  // ignore: non_constant_identifier_names
+  static Future<String> init_table(Database db) async {
+    String resp = '';
+    // ignore: unnecessary_null_comparison
+    if (db == null) {
+      resp = 'Failed to initialise the db';
+    }
+
+    try {
+      await db.execute(
+          'CREATE TABLE IF NOT EXISTS news (id INTEGER PRIMARY KEY AUTOINCREMENT, url TEXT, urlToImage TEXT, source TEXT, author TEXT, title TEXT, description TEXT, publishedAt TEXT, content TEXT)');
+      resp = 'TABLE CREATED SUCCESSFULLY';
+    } catch (e) {
+      resp = 'FAILED TO INSERT INTO THE DB';
+    }
+    return resp;
+  }
+
+  // ignore: non_constant_identifier_names
+  static Future<List<Mail>> get_local_emails({String where = "1"}) async {
+    Database db = await Utils.init();
+//init_table
+    Mail.init_table(db);
+    return db
+        .query(
+      'news',
+      where: where,
+    )
+        .then(
+      (value) {
+        List<Mail> items = [];
+        for (var x in value) {
+          items.add(Mail.fromJson(x));
+        }
+        return items;
+      },
+    );
   }
 }
