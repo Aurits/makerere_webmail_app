@@ -104,15 +104,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                           const SizedBox(width: 50),
                           OutlinedButton(
-                            onPressed: () async {
-                              const url =
-                                  'https://yourlink.com'; // Replace with your actual link
-                              if (await canLaunch(url)) {
-                                await launch(url);
-                              } else {
-                                throw 'Could not launch $url';
-                              }
-                            },
+                            onPressed: _launchUrl,
                             style: OutlinedButton.styleFrom(
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(16.0),
@@ -158,5 +150,13 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
     );
+  }
+
+  final Uri _url = Uri.parse('https://flutter.dev');
+
+  Future<void> _launchUrl() async {
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
   }
 }
