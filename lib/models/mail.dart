@@ -7,7 +7,8 @@ class Mail {
   String date;
   String subject;
   String message;
-  String attachments;
+  String attachmentsName;
+  String attachmentsUrl;
 
   Mail({
     required this.id,
@@ -18,7 +19,8 @@ class Mail {
     required this.date,
     required this.subject,
     required this.message,
-    required this.attachments,
+    required this.attachmentsName,
+    required this.attachmentsUrl,
   });
 
   factory Mail.fromJson(Map<String, dynamic> json) {
@@ -30,7 +32,8 @@ class Mail {
       date: json['date'],
       subject: json['subject'],
       message: json['message'],
-      attachments: json['attachments'],
+      attachmentsName: json['attachmentsName'],
+      attachmentsUrl: json['attachmentsUrl'],
     );
   }
 
@@ -43,7 +46,8 @@ class Mail {
       'date': date,
       'subject': subject,
       'message': message,
-      'attachments': attachments,
+      'attachmentsName': attachmentsName,
+      'attachmentsUrl': attachmentsUrl,
     };
   }
 }
