@@ -60,7 +60,7 @@ class Mail {
     final dio = Dio();
     try {
       Response<dynamic> response = await dio.get(
-        'https://newsapi.org/v2/everything?q=bitcoin&apiKey=867659cf5b5441fd9c83512bdf43d851',
+        'https://www.lytelink.tech',
       );
 
       if (response.data == null) {

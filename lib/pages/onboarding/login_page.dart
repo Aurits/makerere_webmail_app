@@ -134,41 +134,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         onPressed: () async {
-                          // ignore: avoid_print
-                          print("Start....................");
-                          final dio = Dio();
-                          try {
-                            Response<dynamic> response = await dio.get(
-                              'http://localhost:8000/api/fetch-emails',
-                            );
-
-                            if (response.data == null) {
-                              // Handle the case where the response data is null
-                              return;
-                            }
-
-                            if (response.statusCode == 200) {
-                              // Continue processing the response as before
-                              dynamic data = response.data;
-
-                              // ignore: avoid_print
-                              print(data);
-
-                              // if (data.containsKey('articles')) {
-                              //   List<dynamic> articles = data['articles'];
-                              //   // ignore: unused_local_variable
-                              //   int i = 0;
-                              //   for (var x in articles) {
-                              //     i++;
-                              //     NewsModel article = NewsModel.fromJson(x);
-                              //     article.save();
-                              //     // print("Article $i: ${article.title}");
-                              //   }
-                              // } else {}
-                            } else {}
-                          } catch (error) {
-                            // Handle the error case
-                          }
+                          Mail.get_online_emails();
                         },
                         child: const Text(
                           'Login',
