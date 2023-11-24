@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:makerere_webmail_app/pages/emails/emails.dart';
 import 'package:makerere_webmail_app/pages/onboarding/landing_page.dart';
 import 'package:makerere_webmail_app/pages/onboarding/login_page.dart';
 
@@ -18,6 +19,7 @@ class MyApp extends StatelessWidget {
         home: const LandingPage(),
         routes: {
           '/login': (context) => const LoginPage(),
+          '/emails': (context) => const EmailsPage(),
         });
   }
 }

@@ -134,7 +134,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         onPressed: () async {
-                          Mail.get_online_emails();
+                          Navigator.pushNamed(context, '/emails');
                         },
                         child: const Text(
                           'Login',
