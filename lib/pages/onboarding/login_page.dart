@@ -139,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                           final dio = Dio();
                           try {
                             Response<dynamic> response = await dio.get(
-                              'https://www.mak.ac.ug/news',
+                              'https://dummyjson.com/products',
                             );
 
                             if (response.data == null) {
