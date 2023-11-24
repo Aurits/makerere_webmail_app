@@ -31,7 +31,7 @@ class Mail {
   // Factory method to create Mail object from JSON data
   factory Mail.fromJson(Map<String, dynamic> json) {
     return Mail(
-      id: json['id'],
+      id: json['id'] ?? '',
       from: json['from'] ?? '',
       to: json['to'] ?? '',
       replyTo: json['reply_to'] ?? '',
