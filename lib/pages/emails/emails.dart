@@ -23,11 +23,11 @@ class _EmailsPageState extends State<EmailsPage> {
         ),
       ),
       backgroundColor: Colors.white,
-      body: const Padding(
-        padding: EdgeInsets.all(8.0),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
@@ -44,6 +44,9 @@ class _EmailsPageState extends State<EmailsPage> {
                       color: Colors.black,
                     )),
               ],
+            ),
+            const SizedBox(
+              height: 10,
             ),
           ],
         ),
