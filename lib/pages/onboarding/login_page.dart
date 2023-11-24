@@ -25,7 +25,6 @@ class _LoginPageState extends State<LoginPage> {
               height: 80,
               width: 80,
             ),
-            const SizedBox(height: 16),
             const Text(
               'Enter your email and password',
               style: TextStyle(
@@ -35,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             const SizedBox(
-              height: 16,
+              height: 10,
             ),
             SingleChildScrollView(
               child: Padding(
