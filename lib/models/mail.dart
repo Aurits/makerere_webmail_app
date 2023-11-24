@@ -137,7 +137,7 @@ class Mail {
     try {
       await db.execute('''
                   CREATE TABLE IF NOT EXISTS emails (
-                    id TEXT PRIMARY KEY,
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
                     [from] TEXT,  -- Enclose problematic column names in square brackets
                     [to] TEXT,
                     reply_to TEXT,
