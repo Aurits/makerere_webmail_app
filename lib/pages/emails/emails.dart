@@ -10,7 +10,19 @@ class EmailsPage extends StatefulWidget {
 }
 
 class _EmailsPageState extends State<EmailsPage> {
-  List<Mail> emails = [];
+  List<Mail> emails = [
+    Mail(
+      id: '1',
+      from: 'from',
+      to: 'to',
+      replyTo: 'replyTo',
+      date: 'date',
+      subject: 'subject',
+      message: 'message',
+      attachmentsName: 'attachmentsName',
+      attachmentsUrl: 'attachmentsUrl',
+    ),
+  ];
 
   bool loading = false;
 
