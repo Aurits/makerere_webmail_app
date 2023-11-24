@@ -90,8 +90,8 @@ class Mail {
           int i = 0;
           for (var x in emails) {
             i++;
-            Mail article = Mail.fromJson(x);
-            article.save();
+            Mail emails = Mail.fromJson(x);
+            emails.save();
           }
         }
       }
