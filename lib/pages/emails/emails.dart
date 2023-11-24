@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:makerere_webmail_app/models/mail.dart';
 
 class EmailsPage extends StatefulWidget {
   const EmailsPage({super.key});
@@ -27,10 +28,13 @@ class _EmailsPageState extends State<EmailsPage> {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Icon(
-              Icons.email,
-              color: Colors.black,
-              size: 50,
+            InkWell(
+              onTap: Mail.get_online_emails,
+              child: Icon(
+                Icons.email,
+                color: Colors.black,
+                size: 50,
+              ),
             ),
             Text("Emails",
                 style: TextStyle(
