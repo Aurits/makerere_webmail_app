@@ -51,6 +51,10 @@ class _EmailsPageState extends State<EmailsPage> {
 
     await _loadEmails();
 
+    //call the displayEmails
+
+    Mail.displayEmails();
+
     setState(() {
       loading = false;
     });
