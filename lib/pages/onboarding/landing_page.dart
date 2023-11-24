@@ -28,18 +28,18 @@ class _LandingPageState extends State<LandingPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.article_outlined,
-              size: 64,
-              color: Colors.red,
+            Image(
+              image: AssetImage('assets/images/logo.png'),
+              height: 100,
+              width: 100,
             ),
             SizedBox(height: 16),
             Text(
-              'News App',
+              'webmail app',
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
-                color: Colors.brown,
+                color: Colors.red,
               ),
             ),
             SizedBox(
