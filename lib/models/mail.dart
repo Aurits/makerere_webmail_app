@@ -60,7 +60,7 @@ class Mail {
     final dio = Dio();
     try {
       Response<dynamic> response = await dio.get(
-        '10.0.0.2.2:8000/emails',
+        'http://10.0.0.2.2:8000/emails',
       );
 
       if (response.data == null) {
