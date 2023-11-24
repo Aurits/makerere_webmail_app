@@ -23,6 +23,7 @@ class _LoginPageState extends State<LoginPage> {
           statusBarIconBrightness: Brightness.light,
         ),
       ),
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
