@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                         name: 'username',
                         decoration: const InputDecoration(
                           labelText: 'Username',
-                          labelStyle: TextStyle(color: Colors.green),
+                          labelStyle: TextStyle(color: Colors.black),
                           border: OutlineInputBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(16.0)),
@@ -65,10 +65,20 @@ class _LoginPageState extends State<LoginPage> {
                       FormBuilderTextField(
                         name: 'password',
                         decoration: const InputDecoration(
-                            labelText: 'Password',
-                            border: OutlineInputBorder(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(16.0)))),
+                          labelText: 'Password',
+                          labelStyle: TextStyle(color: Colors.black),
+                          border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(16.0)),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                color: Colors
+                                    .green), // Set your desired color here
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(16.0)),
+                          ),
+                        ),
                       ),
                       const SizedBox(height: 20),
                       const Row(
