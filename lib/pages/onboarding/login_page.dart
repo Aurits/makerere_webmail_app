@@ -26,23 +26,23 @@ class _LoginPageState extends State<LoginPage> {
               width: 80,
             ),
             const SizedBox(height: 16),
-            Text(
+            const Text(
               'Enter your email and password',
               style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+                fontSize: 16,
+                fontWeight: FontWeight.normal,
                 color: Colors.black,
               ),
             ),
-            Text(
-              'login',
+            const Text(
+              'to login',
               style: TextStyle(
                 fontSize: 10,
                 fontWeight: FontWeight.bold,
                 color: Colors.black,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 40,
             ),
             Padding(
@@ -52,24 +52,27 @@ class _LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: [
                     FormBuilderTextField(
-                      name: 'email',
-                      decoration: InputDecoration(
-                        labelText: 'Email',
-                        border: OutlineInputBorder(),
-                      ),
+                      name: 'username',
+                      decoration: const InputDecoration(
+                          labelText: 'Username',
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(16.0)))),
                     ),
                     const SizedBox(height: 20),
                     FormBuilderTextField(
                       name: 'password',
-                      decoration: InputDecoration(
-                        labelText: 'Password',
-                        border: OutlineInputBorder(),
-                      ),
+                      decoration: const InputDecoration(
+                          labelText: 'Password',
+                          border: OutlineInputBorder(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(16.0)))),
                     ),
-                    SizedBox(height: 16),
+                    const SizedBox(height: 16),
                     ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
+                          // ignore: avoid_print
                           print(_formKey.currentState!.value);
                         }
                       },
