@@ -10,7 +10,7 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   // ignore: non_constant_identifier_names
   my_init() async {
-    await Future.delayed(const Duration(seconds: 5));
+    await Future.delayed(const Duration(seconds: 10));
     // ignore: use_build_context_synchronously
     Navigator.pushReplacementNamed(context, '/login');
   }
@@ -24,18 +24,19 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      backgroundColor: Colors.lightGreen,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image(
-              image: AssetImage('assets/images/logo.png'),
+              image: AssetImage('assets/images/logo.jpeg'),
               height: 100,
               width: 100,
             ),
             SizedBox(height: 16),
             Text(
-              'webmail app',
+              'Webmail',
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
