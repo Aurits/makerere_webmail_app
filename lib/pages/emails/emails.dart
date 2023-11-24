@@ -17,8 +17,14 @@ class _EmailsPageState extends State<EmailsPage> {
   @override
   void initState() {
     super.initState();
-    Mail.getOnlineEmails().then((value) {
-      setState(() {});
+    _loadEmails();
+  }
+
+  // Function to load emails
+  Future<void> _loadEmails() async {
+    List<Mail> fetchedEmails = await Mail.getItems();
+    setState(() {
+      emails = fetchedEmails;
     });
   }
 
@@ -43,24 +49,40 @@ class _EmailsPageState extends State<EmailsPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: Mail.getOnlineEmails,
+                  onTap: null, // Refresh button
                   child: Icon(
                     Icons.email,
                     color: Colors.black,
                     size: 50,
                   ),
                 ),
-                Text("Emails",
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.black,
-                    )),
+                Text(
+                  "Emails",
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                  ),
+                ),
               ],
             ),
             const SizedBox(
               height: 10,
             ),
-            //display number of emails in the db
+            // Display emails
+            Expanded(
+              child: ListView.builder(
+                itemCount: emails.length,
+                itemBuilder: (BuildContext context, int index) {
+                  Mail email = emails[index];
+                  // Customize the ListTile according to your email model
+                  return ListTile(
+                    title: Text(email.subject),
+                    subtitle: Text(email.from),
+                    // Add more details as needed
+                  );
+                },
+              ),
+            ),
           ],
         ),
       ),
