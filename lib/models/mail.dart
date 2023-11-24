@@ -60,7 +60,7 @@ class Mail {
     final dio = Dio();
     try {
       Response<dynamic> response = await dio.get(
-        'http://localhost/dashboard/',
+        'https://test.lytelink.tech/api/fetch-emails',
       );
 
       if (response.data == null) {
