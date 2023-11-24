@@ -119,8 +119,6 @@ class Mail {
       } catch (e) {
         print("Failed db save: $e");
       }
-
-      print("Table created");
     } else {
       print("Table not created");
     }
