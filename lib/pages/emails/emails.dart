@@ -31,7 +31,7 @@ class _EmailsPageState extends State<EmailsPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: Mail.getItems,
+                  onTap: Mail.getOnlineEmails,
                   child: Icon(
                     Icons.email,
                     color: Colors.black,
@@ -51,7 +51,7 @@ class _EmailsPageState extends State<EmailsPage> {
             //display emails from the local database if any
             Expanded(
               child: FutureBuilder<List<Mail>>(
-                future: Mail.getLocalEmails(),
+                future: Mail.getItems(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
