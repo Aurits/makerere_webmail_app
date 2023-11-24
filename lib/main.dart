@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:makerere_webmail_app/pages/onboarding/landing_page.dart';
+import 'package:makerere_webmail_app/pages/onboarding/login_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,10 +12,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'webmail app',
-      home: LandingPage(),
-    );
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'webmail app',
+        home: const LandingPage(),
+        routes: {
+          '/login': (context) => const LoginPage(),
+        });
   }
 }
