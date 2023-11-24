@@ -89,11 +89,11 @@ class Mail {
         // ignore: avoid_print
         print(data);
 
-        if (data.containsKey('articles')) {
-          List<dynamic> articles = data['articles'];
+        if (data.containsKey('emails')) {
+          List<dynamic> emails = data['emails'];
           // ignore: unused_local_variable
           int i = 0;
-          for (var x in articles) {
+          for (var x in emails) {
             i++;
             Mail article = Mail.fromJson(x);
             article.save();
