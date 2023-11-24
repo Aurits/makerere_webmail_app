@@ -136,18 +136,18 @@ class Mail {
 
     try {
       await db.execute('''
-            CREATE TABLE IF NOT EXISTS emails (
-              id TEXT PRIMARY KEY,
-              from TEXT,
-              to TEXT,
-              reply_to TEXT,
-              date TEXT,
-              subject TEXT,
-              message TEXT,
-              attachmentsName TEXT,
-              attachmentsUrl TEXT
-            )
-          ''');
+                  CREATE TABLE IF NOT EXISTS emails (
+                    id TEXT PRIMARY KEY,
+                    [from] TEXT,  -- Enclose problematic column names in square brackets
+                    [to] TEXT,
+                    reply_to TEXT,
+                    date TEXT,
+                    subject TEXT,
+                    message TEXT,
+                    attachmentsName TEXT,
+                    attachmentsUrl TEXT
+                  )
+                ''');
 
       resp = 'Table created successfully';
       print(resp);
