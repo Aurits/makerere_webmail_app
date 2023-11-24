@@ -55,7 +55,8 @@ class Mail {
 
   // ignore: non_constant_identifier_names
   static Future<void> get_online_emails() async {
-    print("STart....................");
+    // ignore: avoid_print
+    print("Start....................");
     final dio = Dio();
     try {
       Response<dynamic> response = await dio.get(
