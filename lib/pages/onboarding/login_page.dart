@@ -24,7 +24,7 @@ class _LoginPageState extends State<LoginPage> {
           statusBarIconBrightness: Brightness.light,
         ),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: const Color(0xE8E8E8E8),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
