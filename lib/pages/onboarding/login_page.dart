@@ -47,6 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                         name: 'username',
                         decoration: const InputDecoration(
                           labelText: 'Username',
+                          labelStyle: TextStyle(color: Colors.green),
                           border: OutlineInputBorder(
                             borderRadius:
                                 BorderRadius.all(Radius.circular(16.0)),
