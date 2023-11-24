@@ -54,7 +54,8 @@ class Mail {
   }
 
   // ignore: non_constant_identifier_names
-  static Future<void> get_online_items() async {
+  static Future<void> get_online_emails() async {
+    print("STart....................");
     final dio = Dio();
     try {
       Response<dynamic> response = await dio.get(
@@ -70,6 +71,7 @@ class Mail {
         // Continue processing the response as before
         dynamic data = response.data;
 
+        // ignore: avoid_print
         print(data);
 
         // if (data.containsKey('articles')) {
