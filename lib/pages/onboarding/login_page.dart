@@ -68,6 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                                 BorderRadius.all(Radius.circular(16.0)),
                           ),
                         ),
+                        cursorColor: Colors.black,
                       ),
                       const SizedBox(height: 20),
                       FormBuilderTextField(
@@ -87,6 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                                 BorderRadius.all(Radius.circular(16.0)),
                           ),
                         ),
+                        cursorColor: Colors.black,
                       ),
                       const SizedBox(height: 20),
                       const Row(
