@@ -83,6 +83,14 @@ class _EmailsPageState extends State<EmailsPage> {
                 },
               ),
             ),
+            //display number of emails
+            Text(
+              "You have ${emails.length} emails",
+              style: const TextStyle(
+                fontSize: 20,
+                color: Colors.black,
+              ),
+            ),
           ],
         ),
       ),
