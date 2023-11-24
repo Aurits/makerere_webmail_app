@@ -97,7 +97,6 @@ class Mail {
       }
     } catch (error) {
       // Handle the error case
-
       print("Error fetching online emails: $error");
     }
   }
