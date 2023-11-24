@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print, unnecessary_null_comparison
+
 import 'package:dio/dio.dart';
 import 'package:makerere_webmail_app/utils/database.dart';
 import 'package:sqflite/sqflite.dart';
@@ -79,10 +81,12 @@ class Mail {
 
       if (response.statusCode == 200) {
         dynamic data = response.data;
+
         print(data);
 
         if (data.containsKey('emails')) {
           List<dynamic> emails = data['emails'];
+          // ignore: unused_local_variable
           int i = 0;
           for (var x in emails) {
             i++;
@@ -93,7 +97,7 @@ class Mail {
       }
     } catch (error) {
       // Handle the error case
-      // ignore: avoid_print
+
       print("Error fetching online emails: $error");
     }
   }
