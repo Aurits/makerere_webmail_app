@@ -37,35 +37,38 @@ class _LoginPageState extends State<LoginPage> {
             SizedBox(
               height: 40,
             ),
-            FormBuilder(
-              key: _formKey,
-              child: Column(
-                children: [
-                  FormBuilderTextField(
-                    name: 'email',
-                    decoration: InputDecoration(
-                      labelText: 'Email',
-                      border: OutlineInputBorder(),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: FormBuilder(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    FormBuilderTextField(
+                      name: 'email',
+                      decoration: InputDecoration(
+                        labelText: 'Email',
+                        border: OutlineInputBorder(),
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 16),
-                  FormBuilderTextField(
-                    name: 'password',
-                    decoration: InputDecoration(
-                      labelText: 'Password',
-                      border: OutlineInputBorder(),
+                    SizedBox(height: 20),
+                    FormBuilderTextField(
+                      name: 'password',
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        border: OutlineInputBorder(),
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        print(_formKey.currentState!.value);
-                      }
-                    },
-                    child: const Text('Login'),
-                  ),
-                ],
+                    SizedBox(height: 16),
+                    ElevatedButton(
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          print(_formKey.currentState!.value);
+                        }
+                      },
+                      child: const Text('Login'),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
