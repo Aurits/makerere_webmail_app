@@ -34,9 +34,25 @@ class _EmailsPageState extends State<EmailsPage> {
 
   // Function to load emails
   Future<void> _loadEmails() async {
+    // Simulating an asynchronous call to fetch emails
+    await Future.delayed(Duration(seconds: 2));
+
     List<Mail> fetchedEmails = await Mail.getItems();
     setState(() {
       emails = fetchedEmails;
+    });
+  }
+
+  // Function to handle pull-to-refresh
+  Future<void> _handleRefresh() async {
+    setState(() {
+      loading = true;
+    });
+
+    await _loadEmails();
+
+    setState(() {
+      loading = false;
     });
   }
 
@@ -57,45 +73,26 @@ class _EmailsPageState extends State<EmailsPage> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  onTap: Mail.getOnlineEmails, // Refresh button
-                  child: Icon(
-                    Icons.email,
-                    color: Colors.black,
-                    size: 50,
-                  ),
-                ),
-                Text(
-                  "Emails",
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
+            const SizedBox(height: 10),
             // Display emails
             Expanded(
-              child: ListView.builder(
-                itemCount: emails.length,
-                itemBuilder: (BuildContext context, int index) {
-                  Mail email = emails[index];
-                  // Customize the ListTile according to your email model
-                  return ListTile(
-                    title: Text(email.subject),
-                    subtitle: Text(email.from),
-                    // Add more details as needed
-                  );
-                },
+              child: RefreshIndicator(
+                onRefresh: _handleRefresh,
+                child: ListView.builder(
+                  itemCount: emails.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    Mail email = emails[index];
+                    // Customize the ListTile according to your email model
+                    return ListTile(
+                      title: Text(email.subject),
+                      subtitle: Text(email.from),
+                      // Add more details as needed
+                    );
+                  },
+                ),
               ),
             ),
-            //display number of emails
+            // Display the number of emails
             Text(
               "You have ${emails.length} emails",
               style: const TextStyle(

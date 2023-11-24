@@ -175,4 +175,6 @@ class Mail {
       return emails;
     });
   }
+
+  //TO DISPLAY THE NAME OF THE EMAIL IN THE DATABASE BY PRINT
 }
