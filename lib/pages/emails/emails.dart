@@ -10,6 +10,15 @@ class EmailsPage extends StatefulWidget {
 }
 
 class _EmailsPageState extends State<EmailsPage> {
+  List<Mail> emails = [];
+
+  bool loading = false;
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,31 +58,6 @@ class _EmailsPageState extends State<EmailsPage> {
               height: 10,
             ),
             //display emails from the local database if any
-            Expanded(
-              child: FutureBuilder<List<Mail>>(
-                future: Mail.getItems(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return ListView.builder(
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (context, index) {
-                        return Card(
-                          child: ListTile(
-                            title: Text(snapshot.data![index].subject),
-                            subtitle: Text(snapshot.data![index].message),
-                          ),
-                        );
-                      },
-                    );
-                  } else if (snapshot.hasError) {
-                    return Text("${snapshot.error}");
-                  }
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                },
-              ),
-            ),
           ],
         ),
       ),
