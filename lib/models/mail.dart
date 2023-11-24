@@ -130,6 +130,8 @@ class Mail {
 
     if (db == null) {
       resp = 'Failed to initialize the db';
+      print(resp);
+      return resp;
     }
 
     try {
