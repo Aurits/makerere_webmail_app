@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:makerere_webmail_app/models/mail.dart';
+// ignore: unused_import
 import 'package:url_launcher/url_launcher.dart';
 
 class LoginPage extends StatefulWidget {
@@ -131,10 +133,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            // ignore: avoid_print
-                            print(_formKey.currentState!.value);
-                          }
+                          Mail.get_online_items();
                         },
                         child: const Text(
                           'Login',
@@ -152,6 +151,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
+  // ignore: unused_field
   final Uri _url = Uri.parse('https://flutter.dev');
 
   Future<void> _launchUrl() async {
