@@ -51,7 +51,7 @@ class _EmailsPageState extends State<EmailsPage> {
             //display emails from the local database if any
             Expanded(
               child: FutureBuilder<List<Mail>>(
-                future: Mail.getItems(),
+                future: Mail.getLocalEmails(),
                 builder: (context, snapshot) {
                   if (snapshot.hasData) {
                     return ListView.builder(
