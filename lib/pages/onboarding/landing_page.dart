@@ -46,7 +46,9 @@ class _LandingPageState extends State<LandingPage> {
             SizedBox(
               height: 20,
             ),
-            CircularProgressIndicator(backgroundColor: Colors.green),
+            CircularProgressIndicator(
+                backgroundColor: Colors.green,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.red)),
           ],
         ),
       ),
