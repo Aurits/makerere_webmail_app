@@ -17,6 +17,9 @@ class _EmailsPageState extends State<EmailsPage> {
   @override
   void initState() {
     super.initState();
+    Mail.getOnlineEmails().then((value) {
+      setState(() {});
+    });
   }
 
   @override
@@ -57,7 +60,7 @@ class _EmailsPageState extends State<EmailsPage> {
             const SizedBox(
               height: 10,
             ),
-            //display emails from the local database if any
+            //display number of emails in the db
           ],
         ),
       ),
