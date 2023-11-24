@@ -68,6 +68,7 @@ class Mail {
       getOnlineEmails();
       emails = await getLocalEmails();
     }
+    print(emails);
     return emails;
   }
 
