@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -8,44 +9,65 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final _formKey = GlobalKey<FormBuilderState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Login'),
       ),
-      body: const Center(
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image(
               image: AssetImage('assets/images/logo.png'),
-              height: 150,
-              width: 150,
+              height: 80,
+              width: 80,
             ),
             SizedBox(height: 16),
             Text(
-              'Makerere',
-              style: TextStyle(
-                fontSize: 32,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
-              ),
-            ),
-            Text(
-              'Webmail',
+              'enter your email and password to login',
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Colors.white,
+                color: Colors.black,
               ),
             ),
             SizedBox(
               height: 40,
             ),
-            CircularProgressIndicator(
-                backgroundColor: Colors.green,
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.red)),
+            FormBuilder(
+              key: _formKey,
+              child: Column(
+                children: [
+                  FormBuilderTextField(
+                    name: 'email',
+                    decoration: InputDecoration(
+                      labelText: 'Email',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  FormBuilderTextField(
+                    name: 'password',
+                    decoration: InputDecoration(
+                      labelText: 'Password',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        print(_formKey.currentState!.value);
+                      }
+                    },
+                    child: const Text('Login'),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
