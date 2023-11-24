@@ -60,15 +60,15 @@ class Mail {
 
   // Get emails, first from local storage, then online if local is empty
   static Future<List<Mail>> getItems() async {
-    List<Mail> items = await getLocalEmails();
-    if (items.isEmpty) {
+    List<Mail> emails = await getLocalEmails();
+    if (emails.isEmpty) {
       await getOnlineEmails();
-      items = await getLocalEmails();
+      emails = await getLocalEmails();
     } else {
       getOnlineEmails();
-      items = await getLocalEmails();
+      emails = await getLocalEmails();
     }
-    return items;
+    return emails;
   }
 
   // Fetch emails from the online API
@@ -167,11 +167,11 @@ class Mail {
     await initTable(db);
 
     return db.query('emails', where: where).then((value) {
-      List<Mail> items = [];
+      List<Mail> emails = [];
       for (var x in value) {
-        items.add(Mail.fromJson(x));
+        emails.add(Mail.fromJson(x));
       }
-      return items;
+      return emails;
     });
   }
 }
