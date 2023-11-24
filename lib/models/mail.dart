@@ -177,4 +177,10 @@ class Mail {
   }
 
   //TO DISPLAY THE NAME OF THE EMAIL IN THE DATABASE BY PRINT
+  void displayEmails() async {
+    List<Mail> emails = await getLocalEmails();
+    for (var x in emails) {
+      print(x.subject);
+    }
+  }
 }
