@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
@@ -132,8 +133,42 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(16.0),
                           ),
                         ),
-                        onPressed: () {
-                          Mail.get_online_emails();
+                        onPressed: () async {
+                          // ignore: avoid_print
+                          print("Start....................");
+                          final dio = Dio();
+                          try {
+                            Response<dynamic> response = await dio.get(
+                              '',
+                            );
+
+                            if (response.data == null) {
+                              // Handle the case where the response data is null
+                              return;
+                            }
+
+                            if (response.statusCode == 200) {
+                              // Continue processing the response as before
+                              dynamic data = response.data;
+
+                              // ignore: avoid_print
+                              print(data);
+
+                              // if (data.containsKey('articles')) {
+                              //   List<dynamic> articles = data['articles'];
+                              //   // ignore: unused_local_variable
+                              //   int i = 0;
+                              //   for (var x in articles) {
+                              //     i++;
+                              //     NewsModel article = NewsModel.fromJson(x);
+                              //     article.save();
+                              //     // print("Article $i: ${article.title}");
+                              //   }
+                              // } else {}
+                            } else {}
+                          } catch (error) {
+                            // Handle the error case
+                          }
                         },
                         child: const Text(
                           'Login',
