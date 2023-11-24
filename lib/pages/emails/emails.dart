@@ -117,12 +117,12 @@ class _EmailsPageState extends State<EmailsPage> {
                 child: const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(
+                    Icon(
                       Icons.refresh,
                       color: Colors.white,
                     ),
-                    const SizedBox(width: 10),
-                    const Text(
+                    SizedBox(width: 10),
+                    Text(
                       "Refresh",
                       style: TextStyle(
                         fontSize: 20,
