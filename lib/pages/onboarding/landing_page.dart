@@ -24,15 +24,15 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Colors.lightGreen,
+      backgroundColor: Colors.green,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Image(
               image: AssetImage('assets/images/logo.png'),
-              height: 100,
-              width: 100,
+              height: 150,
+              width: 150,
             ),
             SizedBox(height: 16),
             Text(
@@ -40,11 +40,11 @@ class _LandingPageState extends State<LandingPage> {
               style: TextStyle(
                 fontSize: 32,
                 fontWeight: FontWeight.bold,
-                color: Colors.red,
+                color: Colors.white,
               ),
             ),
             SizedBox(
-              height: 20,
+              height: 40,
             ),
             CircularProgressIndicator(
                 backgroundColor: Colors.green,
