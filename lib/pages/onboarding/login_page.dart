@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 
 class LoginPage extends StatefulWidget {
@@ -14,7 +15,13 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Login'),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        toolbarHeight: 0,
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          statusBarColor: Colors.black,
+          statusBarIconBrightness: Brightness.light,
+        ),
       ),
       body: Center(
         child: Column(
@@ -29,8 +36,8 @@ class _LoginPageState extends State<LoginPage> {
               'Enter your email and password',
               style: TextStyle(
                 fontSize: 16,
-                fontWeight: FontWeight.normal,
-                color: Colors.black,
+                fontWeight: FontWeight.w300,
+                color: Colors.black26,
               ),
             ),
             const SizedBox(
