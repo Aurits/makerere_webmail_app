@@ -34,16 +34,8 @@ class _LoginPageState extends State<LoginPage> {
                 color: Colors.black,
               ),
             ),
-            const Text(
-              'to login to your account',
-              style: TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.bold,
-                color: Colors.black,
-              ),
-            ),
             const SizedBox(
-              height: 20,
+              height: 16,
             ),
             SingleChildScrollView(
               child: Padding(
