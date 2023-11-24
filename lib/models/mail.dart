@@ -135,13 +135,24 @@ class Mail {
     }
 
     try {
-      await db.execute(
-        'CREATE TABLE IF NOT EXISTS emails (id TEXT PRIMARY KEY, from TEXT, to TEXT, reply_to TEXT, date TEXT, subject TEXT, message TEXT, attachmentsName TEXT, attachmentsUrl TEXT);',
-      );
+      await db.execute('''
+            CREATE TABLE IF NOT EXISTS emails (
+              id TEXT PRIMARY KEY,
+              from TEXT,
+              to TEXT,
+              reply_to TEXT,
+              date TEXT,
+              subject TEXT,
+              message TEXT,
+              attachmentsName TEXT,
+              attachmentsUrl TEXT
+            )
+          ''');
+
       resp = 'Table created successfully';
       print(resp);
     } catch (e) {
-      resp = 'Failed to create table in the db: $e';
+      resp = 'Failed to create table in the db: ${e.toString()}}';
       print(resp);
     }
     return resp;
