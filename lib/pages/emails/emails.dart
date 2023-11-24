@@ -13,8 +13,8 @@ class _EmailsPageState extends State<EmailsPage> {
   List<Mail> emails = [
     Mail(
       id: '1',
-      from: 'from',
-      to: 'to',
+      froms: 'from',
+      tos: 'to',
       replyTo: 'replyTo',
       date: 'date',
       subject: 'subject',
@@ -89,7 +89,7 @@ class _EmailsPageState extends State<EmailsPage> {
                     // Customize the ListTile according to your email model
                     return ListTile(
                       title: Text(email.subject),
-                      subtitle: Text(email.from),
+                      subtitle: Text(email.froms),
                       // Add more details as needed
                     );
                   },

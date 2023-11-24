@@ -6,8 +6,8 @@ import 'package:sqflite/sqflite.dart';
 
 class Mail {
   String id;
-  String from;
-  String to;
+  String froms;
+  String tos;
   String replyTo;
   String date;
   String subject;
@@ -18,8 +18,8 @@ class Mail {
   // Constructor for Mail object
   Mail({
     required this.id,
-    required this.from,
-    required this.to,
+    required this.froms,
+    required this.tos,
     required this.replyTo,
     required this.date,
     required this.subject,
@@ -32,8 +32,8 @@ class Mail {
   factory Mail.fromJson(Map<String, dynamic> json) {
     return Mail(
       id: json['id'] ?? '',
-      from: json['from'] ?? '',
-      to: json['to'] ?? '',
+      froms: json['from'] ?? '',
+      tos: json['to'] ?? '',
       replyTo: json['reply_to'] ?? '',
       date: json['date'] ?? '',
       subject: json['subject'] ?? '',
@@ -47,8 +47,8 @@ class Mail {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'from': from,
-      'to': to,
+      'from': froms,
+      'to': tos,
       'reply_to': replyTo,
       'date': date,
       'subject': subject,
@@ -138,7 +138,7 @@ class Mail {
 
     try {
       //DELETE TABLE
-      await db.execute('''DROP TABLE IF EXISTS emails''');
+      //await db.execute('''DROP TABLE IF EXISTS emails''');
       await db.execute('''
                   CREATE TABLE IF NOT EXISTS emails (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
