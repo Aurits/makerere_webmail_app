@@ -11,8 +11,10 @@ class _EmailsPageState extends State<EmailsPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      body: Center(
-        child: Text('Emails Page'),
+      body: Column(
+        children: [
+          Text("Emails"),
+        ],
       ),
     );
   }
