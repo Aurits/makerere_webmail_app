@@ -10,7 +10,7 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   // ignore: non_constant_identifier_names
   my_init() async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 5));
     // ignore: use_build_context_synchronously
     Navigator.pushReplacementNamed(context, '/login');
   }
