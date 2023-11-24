@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -90,10 +91,10 @@ class _LoginPageState extends State<LoginPage> {
                         cursorColor: Colors.black,
                       ),
                       const SizedBox(height: 20),
-                      const Row(
+                      Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
-                          Text(
+                          const Text(
                             'Forgot Password?',
                             style: TextStyle(
                               fontSize: 12,
@@ -101,15 +102,32 @@ class _LoginPageState extends State<LoginPage> {
                               color: Colors.black,
                             ),
                           ),
-                          SizedBox(width: 50),
-                          Text(
-                            'Reset',
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.redAccent,
+                          const SizedBox(width: 50),
+                          OutlinedButton(
+                            onPressed: () async {
+                              const url =
+                                  'https://yourlink.com'; // Replace with your actual link
+                              if (await canLaunch(url)) {
+                                await launch(url);
+                              } else {
+                                throw 'Could not launch $url';
+                              }
+                            },
+                            style: OutlinedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(16.0),
+                              ),
+                              side: const BorderSide(color: Colors.redAccent),
                             ),
-                          ),
+                            child: const Text(
+                              'Reset',
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.redAccent,
+                              ),
+                            ),
+                          )
                         ],
                       ),
                       const SizedBox(height: 20),
