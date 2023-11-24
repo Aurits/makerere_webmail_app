@@ -25,22 +25,26 @@ class _EmailsPageState extends State<EmailsPage> {
       backgroundColor: Colors.white,
       body: const Padding(
         padding: EdgeInsets.all(8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: Column(
           children: [
-            InkWell(
-              onTap: Mail.get_online_emails,
-              child: Icon(
-                Icons.email,
-                color: Colors.black,
-                size: 50,
-              ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap: Mail.get_online_emails,
+                  child: Icon(
+                    Icons.email,
+                    color: Colors.black,
+                    size: 50,
+                  ),
+                ),
+                Text("Emails",
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                    )),
+              ],
             ),
-            Text("Emails",
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                )),
           ],
         ),
       ),

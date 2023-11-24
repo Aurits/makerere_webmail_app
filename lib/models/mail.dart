@@ -62,10 +62,6 @@ class Mail {
       Response<dynamic> response = await dio.get(
         'http://10.1.3.216:8000/api/fetch-emails',
       );
-      dynamic data = response.data;
-
-      // ignore: avoid_print
-      print(data);
 
       if (response.data == null) {
         // Handle the case where the response data is null
