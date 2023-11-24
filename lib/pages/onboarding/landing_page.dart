@@ -12,7 +12,7 @@ class _LandingPageState extends State<LandingPage> {
   my_init() async {
     await Future.delayed(const Duration(seconds: 3));
     // ignore: use_build_context_synchronously
-    Navigator.pushReplacementNamed(context, '/news');
+    Navigator.pushReplacementNamed(context, '/login');
   }
 
   @override
