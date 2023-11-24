@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+
 class Mail {
   String id;
   String from;
@@ -49,5 +51,41 @@ class Mail {
       'attachmentsName': attachmentsName,
       'attachmentsUrl': attachmentsUrl,
     };
+  }
+
+  // ignore: non_constant_identifier_names
+  static Future<void> get_online_items() async {
+    final dio = Dio();
+    try {
+      Response<dynamic> response = await dio.get(
+        'https://newsapi.org/v2/everything?q=bitcoin&apiKey=867659cf5b5441fd9c83512bdf43d851',
+      );
+
+      if (response.data == null) {
+        // Handle the case where the response data is null
+        return;
+      }
+
+      if (response.statusCode == 200) {
+        // Continue processing the response as before
+        dynamic data = response.data;
+
+        print(data);
+
+        // if (data.containsKey('articles')) {
+        //   List<dynamic> articles = data['articles'];
+        //   // ignore: unused_local_variable
+        //   int i = 0;
+        //   for (var x in articles) {
+        //     i++;
+        //     NewsModel article = NewsModel.fromJson(x);
+        //     article.save();
+        //     // print("Article $i: ${article.title}");
+        //   }
+        // } else {}
+      } else {}
+    } catch (error) {
+      // Handle the error case
+    }
   }
 }
