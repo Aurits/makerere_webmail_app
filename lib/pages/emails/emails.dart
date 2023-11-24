@@ -103,7 +103,7 @@ class _EmailsPageState extends State<EmailsPage> {
             const SizedBox(height: 10),
             //inkwell to refresh emails
             InkWell(
-              onTap: Mail.getOnlineEmails,
+              onTap: _handleRefresh,
               child: Container(
                 padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
