@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Colors
-                                    .green), // Set your desired color here
+                                    .black45), // Set your desired color here
                             borderRadius:
                                 BorderRadius.all(Radius.circular(16.0)),
                           ),
@@ -83,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                           focusedBorder: OutlineInputBorder(
                             borderSide: BorderSide(
                                 color: Colors
-                                    .green), // Set your desired color here
+                                    .black45), // Set your desired color here
                             borderRadius:
                                 BorderRadius.all(Radius.circular(16.0)),
                           ),
