@@ -10,7 +10,7 @@ class LandingPage extends StatefulWidget {
 class _LandingPageState extends State<LandingPage> {
   // ignore: non_constant_identifier_names
   my_init() async {
-    await Future.delayed(const Duration(seconds: 10));
+    await Future.delayed(const Duration(seconds: 20));
     // ignore: use_build_context_synchronously
     Navigator.pushReplacementNamed(context, '/login');
   }
@@ -36,9 +36,17 @@ class _LandingPageState extends State<LandingPage> {
             ),
             SizedBox(height: 16),
             Text(
-              'Webmail',
+              'Makerere',
               style: TextStyle(
                 fontSize: 32,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+            ),
+            Text(
+              'Webmail',
+              style: TextStyle(
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
               ),
