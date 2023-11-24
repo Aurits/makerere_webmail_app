@@ -73,6 +73,8 @@ class _LoginPageState extends State<LoginPage> {
                       const SizedBox(height: 20),
                       FormBuilderTextField(
                         name: 'password',
+                        obscureText:
+                            true, // Set this property to true to hide the password
                         decoration: const InputDecoration(
                           labelText: 'Password',
                           labelStyle: TextStyle(color: Colors.black),
@@ -81,9 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                                 BorderRadius.all(Radius.circular(16.0)),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderSide: BorderSide(
-                                color: Colors
-                                    .black45), // Set your desired color here
+                            borderSide: BorderSide(color: Colors.black45),
                             borderRadius:
                                 BorderRadius.all(Radius.circular(16.0)),
                           ),
