@@ -155,8 +155,8 @@ class _LoginPageState extends State<LoginPage> {
   final Uri _url = Uri.parse('https://flutter.dev');
 
   Future<void> _launchUrl() async {
-    if (!await launchUrl(_url)) {
-      throw Exception('Could not launch $_url');
-    }
+    // if (!await launchUrl(_url)) {
+    //   throw Exception('Could not launch $_url');
+    // }
   }
 }
