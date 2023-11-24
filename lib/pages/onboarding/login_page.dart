@@ -36,8 +36,7 @@ class _LoginPageState extends State<LoginPage> {
             const Text(
               'Enter your email and password',
               style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.w300,
+                fontSize: 14,
                 color: Colors.black45,
               ),
             ),
