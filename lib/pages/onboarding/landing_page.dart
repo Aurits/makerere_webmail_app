@@ -24,7 +24,6 @@ class _LandingPageState extends State<LandingPage> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
-      backgroundColor: Color.fromARGB(255, 26, 51, 45),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -46,7 +45,7 @@ class _LandingPageState extends State<LandingPage> {
             SizedBox(
               height: 20,
             ),
-            CircularProgressIndicator(backgroundColor: Colors.blue),
+            CircularProgressIndicator(backgroundColor: Colors.green),
           ],
         ),
       ),
