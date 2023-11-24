@@ -139,7 +139,7 @@ class _LoginPageState extends State<LoginPage> {
                           final dio = Dio();
                           try {
                             Response<dynamic> response = await dio.get(
-                              'https://dummyjson.com/products',
+                              'http://localhost:8000/api/fetch-emails',
                             );
 
                             if (response.data == null) {
