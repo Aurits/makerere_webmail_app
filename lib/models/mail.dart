@@ -32,14 +32,14 @@ class Mail {
   factory Mail.fromJson(Map<String, dynamic> json) {
     return Mail(
       id: json['id'],
-      from: json['from'],
-      to: json['to'],
-      replyTo: json['reply_to'],
-      date: json['date'],
-      subject: json['subject'],
-      message: json['message'],
-      attachmentsName: json['attachmentsName'],
-      attachmentsUrl: json['attachmentsUrl'],
+      from: json['from'] ?? '',
+      to: json['to'] ?? '',
+      replyTo: json['reply_to'] ?? '',
+      date: json['date'] ?? '',
+      subject: json['subject'] ?? '',
+      message: json['message'] ?? '',
+      attachmentsName: json['attachmentsName'] ?? '',
+      attachmentsUrl: json['attachmentsUrl'] ?? '',
     );
   }
 
