@@ -117,7 +117,7 @@ class Mail {
     if (resp.isNotEmpty) {
       try {
         await db.insert(
-          'news',
+          'emails',
           toJson(),
           conflictAlgorithm: ConflictAlgorithm.replace,
         );
@@ -149,7 +149,7 @@ class Mail {
 
     try {
       await db.execute(
-          'CREATE TABLE IF NOT EXISTS news (id INTEGER PRIMARY KEY AUTOINCREMENT, url TEXT, urlToImage TEXT, source TEXT, author TEXT, title TEXT, description TEXT, publishedAt TEXT, content TEXT)');
+          'CREATE TABLE IF NOT EXISTS emails (id TEXT PRIMARY KEY, from TEXT, to TEXT, reply_to TEXT, date TEXT, subject TEXT, message TEXT, attachmentsName TEXT, attachmentsUrl TEXT);');
       resp = 'TABLE CREATED SUCCESSFULLY';
     } catch (e) {
       resp = 'FAILED TO INSERT INTO THE DB';
@@ -164,7 +164,7 @@ class Mail {
     Mail.init_table(db);
     return db
         .query(
-      'news',
+      'emails',
       where: where,
     )
         .then(
