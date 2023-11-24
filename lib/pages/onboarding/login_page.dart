@@ -35,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             const Text(
-              'to login',
+              'to login to your account',
               style: TextStyle(
                 fontSize: 10,
                 fontWeight: FontWeight.bold,
@@ -43,42 +43,44 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             const SizedBox(
-              height: 40,
+              height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: FormBuilder(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    FormBuilderTextField(
-                      name: 'username',
-                      decoration: const InputDecoration(
-                          labelText: 'Username',
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(16.0)))),
-                    ),
-                    const SizedBox(height: 20),
-                    FormBuilderTextField(
-                      name: 'password',
-                      decoration: const InputDecoration(
-                          labelText: 'Password',
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(16.0)))),
-                    ),
-                    const SizedBox(height: 16),
-                    ElevatedButton(
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          // ignore: avoid_print
-                          print(_formKey.currentState!.value);
-                        }
-                      },
-                      child: const Text('Login'),
-                    ),
-                  ],
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: FormBuilder(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      FormBuilderTextField(
+                        name: 'username',
+                        decoration: const InputDecoration(
+                            labelText: 'Username',
+                            border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(16.0)))),
+                      ),
+                      const SizedBox(height: 20),
+                      FormBuilderTextField(
+                        name: 'password',
+                        decoration: const InputDecoration(
+                            labelText: 'Password',
+                            border: OutlineInputBorder(
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(16.0)))),
+                      ),
+                      const SizedBox(height: 16),
+                      ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            // ignore: avoid_print
+                            print(_formKey.currentState!.value);
+                          }
+                        },
+                        child: const Text('Login'),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
