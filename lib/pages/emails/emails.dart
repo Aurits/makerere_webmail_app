@@ -35,7 +35,7 @@ class _EmailsPageState extends State<EmailsPage> {
   // Function to load emails
   Future<void> _loadEmails() async {
     // Simulating an asynchronous call to fetch emails
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 3));
 
     List<Mail> fetchedEmails = await Mail.getItems();
     setState(() {
@@ -98,6 +98,35 @@ class _EmailsPageState extends State<EmailsPage> {
               style: const TextStyle(
                 fontSize: 20,
                 color: Colors.black,
+              ),
+            ),
+            const SizedBox(height: 10),
+            //inkwell to refresh emails
+            InkWell(
+              onTap: Mail.getOnlineEmails,
+              child: Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  color: Colors.black,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: const Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Icon(
+                      Icons.refresh,
+                      color: Colors.white,
+                    ),
+                    const SizedBox(width: 10),
+                    const Text(
+                      "Refresh",
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],
