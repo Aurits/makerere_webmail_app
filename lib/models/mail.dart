@@ -6,8 +6,8 @@ import 'package:sqflite/sqflite.dart';
 
 class Mail {
   String id;
-  String froms;
-  String tos;
+  String sender;
+  String receiver;
   String replyTo;
   String date;
   String subject;
@@ -18,8 +18,8 @@ class Mail {
   // Constructor for Mail object
   Mail({
     required this.id,
-    required this.froms,
-    required this.tos,
+    required this.sender,
+    required this.receiver,
     required this.replyTo,
     required this.date,
     required this.subject,
@@ -32,8 +32,8 @@ class Mail {
   factory Mail.fromJson(Map<String, dynamic> json) {
     return Mail(
       id: json['id'] ?? '',
-      froms: json['from'] ?? '',
-      tos: json['to'] ?? '',
+      sender: json['from'] ?? '',
+      receiver: json['to'] ?? '',
       replyTo: json['reply_to'] ?? '',
       date: json['date'] ?? '',
       subject: json['subject'] ?? '',
@@ -47,8 +47,8 @@ class Mail {
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'from': froms,
-      'to': tos,
+      'from': sender,
+      'to': receiver,
       'reply_to': replyTo,
       'date': date,
       'subject': subject,
@@ -138,12 +138,12 @@ class Mail {
 
     try {
       //DELETE TABLE
-      //await db.execute('''DROP TABLE IF EXISTS emails''');
+      await db.execute('''DROP TABLE IF EXISTS emails''');
       await db.execute('''
                   CREATE TABLE IF NOT EXISTS emails (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    froms TEXT,  -- Enclose problematic column names in square brackets
-                    tos TEXT,
+                    sender TEXT,  -- Enclose problematic column names in square brackets
+                    receiver TEXT,
                     reply_to TEXT,
                     date TEXT,
                     subject TEXT,
