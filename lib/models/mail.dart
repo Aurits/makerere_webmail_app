@@ -62,6 +62,7 @@ class Mail {
   static Future<List<Mail>> getItems() async {
     List<Mail> emails = await getLocalEmails();
     if (emails.isEmpty) {
+      print("Fetching online emails");
       await getOnlineEmails();
       emails = await getLocalEmails();
     } else {
