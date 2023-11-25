@@ -10,19 +10,7 @@ class EmailsPage extends StatefulWidget {
 }
 
 class _EmailsPageState extends State<EmailsPage> {
-  List<Mail> emails = [
-    Mail(
-      id: '1',
-      froms: 'from',
-      tos: 'to',
-      replyTo: 'replyTo',
-      date: 'date',
-      subject: 'subject',
-      message: 'message',
-      attachmentsName: 'attachmentsName',
-      attachmentsUrl: 'attachmentsUrl',
-    ),
-  ];
+  List<Mail> emails = [];
 
   bool loading = false;
 
@@ -89,7 +77,7 @@ class _EmailsPageState extends State<EmailsPage> {
                     // Customize the ListTile according to your email model
                     return ListTile(
                       title: Text(email.subject),
-                      subtitle: Text(email.froms),
+                      subtitle: Text(email.sender),
                       // Add more details as needed
                     );
                   },
