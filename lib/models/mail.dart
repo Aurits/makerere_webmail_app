@@ -113,7 +113,7 @@ class Mail {
       print("start......");
       try {
         await db.insert(
-          'emails',
+          'emailTable',
           toJson(),
           conflictAlgorithm: ConflictAlgorithm.replace,
         );
@@ -140,7 +140,7 @@ class Mail {
       //DELETE TABLE
       await db.execute('''DROP TABLE IF EXISTS emails''');
       await db.execute('''
-                  CREATE TABLE IF NOT EXISTS emails (
+                  CREATE TABLE IF NOT EXISTS emailTable (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     sender TEXT,  -- Enclose problematic column names in square brackets
                     receiver TEXT,
@@ -167,7 +167,7 @@ class Mail {
     Database db = await Utils.init();
     await initTable(db);
 
-    return db.query('emails', where: where).then((value) {
+    return db.query('emailTable', where: where).then((value) {
       List<Mail> emails = [];
       for (var x in value) {
         emails.add(Mail.fromJson(x));
