@@ -108,6 +108,7 @@ class Mail {
     String resp = await initTable(db);
 
     print(resp);
+    print("start......next");
 
     if (resp.isNotEmpty) {
       print("start......");
