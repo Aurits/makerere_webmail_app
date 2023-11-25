@@ -62,7 +62,7 @@ class Mail {
   static Future<List<Mail>> getItems() async {
     List<Mail> emails = await getLocalEmails();
     if (emails.isEmpty) {
-      print("Fetching online emails");
+      print("Fetching online emails...");
       await getOnlineEmails();
       emails = await getLocalEmails();
     } else {
@@ -88,13 +88,15 @@ class Mail {
 
         if (data.containsKey('emails')) {
           List<dynamic> emails = data['emails'];
-          // ignore: unused_local_variable
+
           int i = 0;
           for (var x in emails) {
             i++;
             Mail emails = Mail.fromJson(x);
             emails.save();
           }
+
+          print("Saved $i emails..........................................");
         }
       }
     } catch (error) {
