@@ -153,7 +153,7 @@ class Mail {
                   )
                 ''');
 
-      resp = 'Table created successfully';
+      resp = 'Table created successfully....';
       print(resp);
     } catch (e) {
       resp = 'Failed to create table in the db: ${e.toString()}}';
